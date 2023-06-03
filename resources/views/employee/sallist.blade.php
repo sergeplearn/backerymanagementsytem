@@ -47,11 +47,8 @@ $number = 1;
 
             
             
-            <form action="/delete/Regemploysal/{{ $sal->id }}" method="post">
-          @csrf
-          @method('DELETE')
-          <button class="btn btn-danger"><i class="fas fa-trash fa-lg" ></i></button>
-        </form>
+           
+            <a href="{{route('regemploysal.edit',$sal->id)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded"data-mdb-ripple-color="dark">edit</a>
         </td>
         </tr>
         @endforeach

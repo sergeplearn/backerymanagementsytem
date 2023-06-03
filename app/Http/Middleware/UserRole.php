@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserRole
@@ -17,12 +16,12 @@ class UserRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!in_array(Auth::user()->role, ['admin','user'])){
-           
+        if (! in_array(Auth::user()->role, ['admin', 'user'])) {
+
             return redirect('/error');
 
         }
-        
+
         return $next($request);
     }
 }

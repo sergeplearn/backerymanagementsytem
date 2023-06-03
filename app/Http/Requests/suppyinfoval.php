@@ -22,12 +22,12 @@ class suppyinfoval extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'tell'=>'required|phone:AUTO,CM',
-             'address'=>'required',
-             'NIC_no'=>'required',
-             'date'=>'required',
-             'user_id'=>'required',
+            'name' => 'required',
+            'tell' => 'required|phone:AUTO,CM',
+            'address' => 'required',
+            'NIC_no' => 'required',
+            'date' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

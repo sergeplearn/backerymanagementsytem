@@ -2,19 +2,19 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\money;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class MoneyPolicy
 {
-
-    public function before(User $user, $ability){
-        if($user->role == 'super_admin'){
+    public function before(User $user, $ability)
+    {
+        if ($user->role == 'super_admin') {
             return true;
         }
 
     }
+
     /**
      * Determine whether the user can view any models.
      */
@@ -36,7 +36,7 @@ class MoneyPolicy
      */
     public function create(User $user): bool
     {
-        
+
     }
 
     /**
@@ -45,8 +45,7 @@ class MoneyPolicy
     public function update(User $user, money $money): bool
     {
         return $user->role == 'admin';
-            
-         
+
     }
 
     /**

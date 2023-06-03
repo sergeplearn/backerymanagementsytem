@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\paysuppliesrequest;
 use App\Models\paysupplie;
 use App\Models\supply;
-use App\Http\Requests\paysuppliesrequest;
-
 use Illuminate\Support\Facades\Gate;
 
 class PaysuppliesController extends Controller
@@ -13,7 +13,7 @@ class PaysuppliesController extends Controller
     {
         $supply = $id;
         $paysupply = supply::find($id)->paysupplie;
-        
+
         return view('supplymoney.show', ['paysupply' => $paysupply, 'supply' => $supply]);
 
     }
@@ -22,27 +22,28 @@ class PaysuppliesController extends Controller
     {
         if ((Gate::allows('isAdmin')) || (Gate::allows('isUser'))) {
             $collectmony = paysupplie::create($request->validated());
-            return redirect('paysupplie/' . $collectmony->ref_supply)->with('msgs', 'successfully updated');
+
+            return redirect('paysupplie/'.$collectmony->ref_supply)->with('msgs', 'successfully updated');
 
         } else {
             return redirect('/error');
         }
 
-
-
     }
 
     public function edit(paysupplie $paysupplie)
     {
-      
+
         return view('supplymoney.edit', compact('paysupplie'));
 
     }
+
     public function update(paysuppliesrequest $request, paysupplie $paysupplie)
     {
-        if (!Gate::allows('isUser')) {
+        if (! Gate::allows('isUser')) {
 
             $paysupplie->update($request->validated());
+
             return redirect('paysupplie/'.$paysupplie->ref_supply)->with('msgs', 'successfully updated');
 
         } else {

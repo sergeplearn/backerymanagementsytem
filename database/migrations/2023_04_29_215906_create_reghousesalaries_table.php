@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('salary');
             $table->date('date');
             $table->string('name');
-           $table->uuid('house_id');
-            
+            $table->uuid('house_id');
+
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

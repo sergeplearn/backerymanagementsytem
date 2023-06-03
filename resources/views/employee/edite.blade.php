@@ -178,14 +178,18 @@
 
     <tr>
       <th><!-- Button trigger modal -->
+      @can('update',$employee)
 <button type="button" class="btn btn-primary w-100" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
 <i class="fas fa-pen-to-square fa-lg"></i>
 </button>
+@endcan
 </th>
       <td><!-- Button trigger modal -->
+      @can('delete',$employee)   
 <button type="button" class="btn btn-danger w-100" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
 <i class="fas fa-trash fa-lg" ></i>
 </button>
+@endcan
 </td>
     </tr>
    </table>

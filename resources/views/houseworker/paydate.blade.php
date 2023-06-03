@@ -32,7 +32,7 @@
 
        @csrf 
        <input type="hidden" name="_token" value="{{ csrf_token() }}" class="form-control">
-<input type="hidden" name='house_id' value='{{ $houseworkers->id }}'>
+<input type="text" name='house_id' value='{{ $houseworker }}'>
 
 
  <div class="form-group ">

@@ -13,7 +13,8 @@ class RentpaymentController extends Controller
     public function index()
     {
         $rentpayment = rentpayment::all();
-        return view('rentpayment.show',compact('rentpayment'));  
+
+        return view('rentpayment.show', compact('rentpayment'));
     }
 
     /**
@@ -21,7 +22,7 @@ class RentpaymentController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -29,8 +30,9 @@ class RentpaymentController extends Controller
      */
     public function store(Request $request)
     {
-        rentpayment::create($request->only(['date','amount','rent_id']));
-        return "save";
+        rentpayment::create($request->only(['date', 'amount', 'rent_id']));
+
+        return 'save';
     }
 
     /**
@@ -39,7 +41,8 @@ class RentpaymentController extends Controller
     public function show(rentpayment $rentpayment)
     {
         $rentpayment = rentpayment::all();
-        return view('rentpayment.show',compact('rentpayment'));
+
+        return view('rentpayment.show', compact('rentpayment'));
     }
 
     /**
@@ -64,6 +67,7 @@ class RentpaymentController extends Controller
             'rent_id' => 'required|max:255',
         ]);
         $rentpayment->update($validated);
+
         return redirect(route('rentpayment.index'));
     }
 

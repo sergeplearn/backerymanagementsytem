@@ -22,12 +22,12 @@ class itemsu extends FormRequest
     public function rules(): array
     {
         return [
-            'item'=>'required',
-         'ref_supply'=>'required',
-         'number'=>'required',
-         'itemprice'=>'required',
-          'date'=>'required',
-           'user_id'=>'required',
+            'item' => 'required',
+            'ref_supply' => 'required',
+            'number' => 'required',
+            'itemprice' => 'required',
+            'date' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

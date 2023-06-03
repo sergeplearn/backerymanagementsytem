@@ -27,7 +27,7 @@
   <div class="col-md-6">
 
   
-    <form class="needs-validation from-prevent-multiple-submits" novalidate action="/conferm" method="get">
+    <form class="needs-validation from-prevent-multiple-submits" novalidate action="/employees/salary" method="get">
 
        @csrf 
      

@@ -13,8 +13,8 @@ class HousetypeController extends Controller
     public function index()
     {
 
-        return view('houserent.house.create',[
-            'housetypes'=> housetype::with('user')->latest()->get(),
+        return view('houserent.house.create', [
+            'housetypes' => housetype::with('user')->latest()->get(),
         ]);
     }
 
@@ -32,14 +32,14 @@ class HousetypeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'house_no'=>'required',
-        'price'=>'required',
-        'description'=>'required',
-        'catigory'=>'required',
+            'house_no' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'catigory' => 'required',
         ]);
         $request->user()->housetypes()->create($validated);
-       
-        return "successful";
+
+        return 'successful';
     }
 
     /**
@@ -55,8 +55,8 @@ class HousetypeController extends Controller
      */
     public function edit(housetype $housetype)
     {
-      
-        return view('houserent.house.edit',['housetype'=>$housetype]);
+
+        return view('houserent.house.edit', ['housetype' => $housetype]);
     }
 
     /**
@@ -65,13 +65,13 @@ class HousetypeController extends Controller
     public function update(Request $request, housetype $housetype)
     {
         $validated = $request->validate([
-            'house_no'=>'required',
-        'price'=>'required',
-        'description'=>'required',
-        'catigory'=>'required',
+            'house_no' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'catigory' => 'required',
         ]);
         $housetype->update($validated);
-       
+
         return redirect(route('housetype.index'));
     }
 
@@ -81,6 +81,7 @@ class HousetypeController extends Controller
     public function destroy(housetype $housetype)
     {
         $housetype->delete();
+
         return redirect(route('housetype.index'));
     }
 }

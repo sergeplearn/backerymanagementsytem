@@ -22,12 +22,12 @@ class registerhousesalrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date'=> 'required|max:255',
-            'name'=> 'required|max:255',
-            'salary'=> 'required|max:255',
-            'house_id'=> 'required|max:255',
-            'user_id'=> 'required|max:255',
-            
+            'date' => 'required|max:255',
+            'name' => 'required|max:255',
+            'salary' => 'required|max:255',
+            'house_id' => 'required|max:255',
+            'user_id' => 'required|max:255',
+
         ];
     }
 }

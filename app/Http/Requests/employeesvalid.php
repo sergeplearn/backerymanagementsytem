@@ -22,21 +22,23 @@ class employeesvalid extends FormRequest
     public function rules(): array
     {
         return [
-            'workerID'=>'required',
-            'fname'=>'required',
-            'sname'=>'required',
-            'tell'=>'required|phone:AUTO,CM',
-            'address'=>'required',
-            'code'=>['required', 'max:255'],
-            'date'=>'required',
-            'pecentage'=>'required',
-          
+            'workerID' => 'required',
+            'fname' => 'required',
+            'sname' => 'required',
+            'tell' => 'required|phone:AUTO,CM',
+            'address' => 'required',
+            'code' => ['required', 'max:255'],
+            'date' => 'required',
+            'pecentage' => 'required',
+
         ];
     }
 
-    public function messages(){
-        return[
-        'tell.phone' => 'the number most be a valide cameroon number',
-      
-        ]; }
+    public function messages()
+    {
+        return [
+            'tell.phone' => 'the number most be a valide cameroon number',
+
+        ];
+    }
 }

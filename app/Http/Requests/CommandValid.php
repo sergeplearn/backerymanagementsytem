@@ -22,20 +22,20 @@ class CommandValid extends FormRequest
     public function rules(): array
     {
         return [
-            'bread50'=>'required',
-            'long40'=>'required',
-            'square40'=>'required',
-            'long80'=>'required',
-            'round'=>'required',
-            'kirico'=>'required',
-            'square80'=>'required',
-            'bread200'=>'required',
-            'bread300'=>'required',
-            'bread500'=>'required',
-            'bread1000'=>'required',
-            'emply_id'=>'required',
-            'date'=>'required',
-            'user_id'=>'required',
+            'bread50' => 'required',
+            'long40' => 'required',
+            'square40' => 'required',
+            'long80' => 'required',
+            'round' => 'required',
+            'kirico' => 'required',
+            'square80' => 'required',
+            'bread200' => 'required',
+            'bread300' => 'required',
+            'bread500' => 'required',
+            'bread1000' => 'required',
+            'emply_id' => 'required',
+            'date' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

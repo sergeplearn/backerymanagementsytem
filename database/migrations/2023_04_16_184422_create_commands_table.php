@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('commands', function (Blueprint $table) {
             $table->uuid('id')->primary();
-          
+
             $table->integer('bread50');
             $table->integer('long40');
             $table->integer('square40');

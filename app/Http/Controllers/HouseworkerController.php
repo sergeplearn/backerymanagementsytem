@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\houseworker;
-use Illuminate\Http\Request;
 use App\Http\Requests\Houseworkerval;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\updatehouseworkers;
+use App\Models\houseworker;
+use Illuminate\Support\Facades\Gate;
+
 class HouseworkerController extends Controller
 {
     /**
@@ -14,42 +14,42 @@ class HouseworkerController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('isUser')){
-           
-            return view('houseworker.show',['houseworkers'=> houseworker::with('user')->latest()->get(),]);
-        }else{
+        if (! Gate::allows('isUser')) {
+
+            return view('houseworker.show', ['houseworkers' => houseworker::with('user')->latest()->get()]);
+        } else {
             return redirect('/error');
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Houseworkerval $request)
     {
-        if (!Gate::allows('isUser')){
+        if (! Gate::allows('isUser')) {
             $request->user()->houseworkers()->create($request->validated());
-                return redirect('/houseworker')->with('msgs','successfully updated');
-            }else{
-                return redirect('/error');
-            }
-            
+
+            return redirect('/houseworker')->with('msgs', 'successfully updated');
+        } else {
+            return redirect('/error');
+        }
+
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(houseworker $houseworker)
     {
         //
+    }
+
+    public function paydate($id)
+    {
+
+        //if (!Gate::allows('isUser')){
+        $houseworker = $id;
+
+        return view('houseworker.paydate', ['houseworker' => $houseworker]);
+        //}else{
+        //  return redirect('/error');
+        //}
+
     }
 
     /**
@@ -58,12 +58,12 @@ class HouseworkerController extends Controller
     public function edit(houseworker $houseworker)
     {
 
-        if (!Gate::allows('isUser')){
-    return view('houseworker.info',['houseworker'=>$houseworker]);
-    }else{
-        return redirect('/error');
-    }
-         
+        if (! Gate::allows('isUser')) {
+            return view('houseworker.info', ['houseworker' => $houseworker]);
+        } else {
+            return redirect('/error');
+        }
+
     }
 
     /**
@@ -71,15 +71,15 @@ class HouseworkerController extends Controller
      */
     public function update(updatehouseworkers $request, houseworker $houseworker)
     {
-         // if(!Gate::allows('isUser')){
-            $houseworker->update($request->validated());
-      
-            return redirect('houseworker/'. $houseworker->id .'/edit')->with('msgs','successfully updated');
-         
-               //}else{
-                 //  return redirect('/error');
-               //}
-               
+        // if(!Gate::allows('isUser')){
+        $houseworker->update($request->validated());
+
+        return redirect('houseworker/'.$houseworker->id.'/edit')->with('msgs', 'successfully updated');
+
+        //}else{
+        //  return redirect('/error');
+        //}
+
     }
 
     /**
@@ -87,13 +87,14 @@ class HouseworkerController extends Controller
      */
     public function destroy(houseworker $houseworker)
     {
-          //if((Gate::denies('isUser'))&&(Gate::denies('isAdmin'))){
+        //if((Gate::denies('isUser'))&&(Gate::denies('isAdmin'))){
 
-$houseworker->delete();
-return redirect('/houseworker')->with('msgs','successfully updated');
+        $houseworker->delete();
 
-//}else{
-   // return redirect('/error');
-//}
+        return redirect('/houseworker')->with('msgs', 'successfully updated');
+
+        //}else{
+        // return redirect('/error');
+        //}
     }
 }

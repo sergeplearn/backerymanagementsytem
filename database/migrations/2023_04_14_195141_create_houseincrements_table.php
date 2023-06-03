@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('house_id');
             $table->integer('amount');
             $table->date('date');
-           
+
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

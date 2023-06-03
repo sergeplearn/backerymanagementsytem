@@ -22,21 +22,22 @@ class updatehouseworkers extends FormRequest
     public function rules(): array
     {
         return [
-          
-                'fname'=>'required',
-                'sname'=>'required',
-                'tell'=>'required|phone:AUTO,CM',
-                'address'=>'required',
-               'date'=>'required',
-                'salary'=>'required',
-               
-        
+
+            'fname' => 'required',
+            'sname' => 'required',
+            'tell' => 'required|phone:AUTO,CM',
+            'address' => 'required',
+            'date' => 'required',
+            'salary' => 'required',
+
         ];
     }
 
-    public function messages(){
-        return[
-        'tell.phone' => 'the number most be a valide cameroon number',
-      
-        ]; }
+    public function messages()
+    {
+        return [
+            'tell.phone' => 'the number most be a valide cameroon number',
+
+        ];
+    }
 }

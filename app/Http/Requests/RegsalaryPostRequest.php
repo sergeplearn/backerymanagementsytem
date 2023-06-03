@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-use Illuminate\Validation\Validator;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegsalaryPostRequest extends FormRequest
@@ -28,8 +28,4 @@ class RegsalaryPostRequest extends FormRequest
             'user_id' => 'required',
         ];
     }
-
-
-
-    
 }

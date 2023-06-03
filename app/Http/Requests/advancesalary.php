@@ -22,10 +22,10 @@ class advancesalary extends FormRequest
     public function rules(): array
     {
         return [
-           'house_id'=>'required',
-            'amount'=>'required',
-           'date'=>'required',
-          
+            'house_id' => 'required',
+            'amount' => 'required',
+            'date' => 'required',
+
         ];
     }
 }

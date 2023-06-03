@@ -12,9 +12,9 @@ class PriceofbreadController extends Controller
      */
     public function index()
     {
-      
-       return view('price.index',['priceofbreads'=> priceofbread::with('user')->latest()->get(),]);
-       
+
+        return view('price.index', ['priceofbreads' => priceofbread::with('user')->latest()->get()]);
+
     }
 
     /**
@@ -30,16 +30,17 @@ class PriceofbreadController extends Controller
      */
     public function store(Request $request)
     {
-       $validation = $request->validate([
-                 'bread50'=>'required',
-                 'bread100'=>'required',
-                 'bread200'=>'required',
-                 'bread300'=>'required',
-                  'bread500'=>'required',
-                  'bread1000'=>'required',
-    ]);
-    $request->user()->priceofbreads()->create($validation);
-    return "save";
+        $validation = $request->validate([
+            'bread50' => 'required',
+            'bread100' => 'required',
+            'bread200' => 'required',
+            'bread300' => 'required',
+            'bread500' => 'required',
+            'bread1000' => 'required',
+        ]);
+        $request->user()->priceofbreads()->create($validation);
+
+        return 'save';
     }
 
     /**

@@ -129,7 +129,7 @@
          
          
           <li class="list-group-item py-1">
-            <a href="/expenditure/show" class="text-reset"><span>show</span></a>
+            <a href="/expenditure" class="text-reset"><span>show</span></a>
           </li>
         </ul>
         <!-- Collapse 2 -->
@@ -258,9 +258,7 @@
                                 </li>
                             @endif
                             
-                            <li class="nav-item">
-                                    <a class="nav-link" href="/registers">{{ __('register') }}</a>
-                                </li>
+                           
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -274,7 +272,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                   @if(Auth::user()->role == 'admin')
-                                <a class="dropdown-item" href="/registers">register</a>
+                                <a class="dropdown-item" href="/User">register</a>
                                   @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     id="logout">

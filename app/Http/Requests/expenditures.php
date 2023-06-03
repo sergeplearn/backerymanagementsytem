@@ -22,11 +22,11 @@ class expenditures extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'date'=>'required',
-           'amount'=>'required',
-           'why'=>'required',
-            'user_id'=>'required',
+            'name' => 'required',
+            'date' => 'required',
+            'amount' => 'required',
+            'why' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

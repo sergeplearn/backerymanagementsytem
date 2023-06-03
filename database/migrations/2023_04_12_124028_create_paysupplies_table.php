@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('paysupplies', function (Blueprint $table) {
             $table->uuid('id')->primary();
-           
+
             $table->integer('amount');
             $table->date('date');
             $table->foreignUuid('ref_supply')->references('id')->on('supplies');

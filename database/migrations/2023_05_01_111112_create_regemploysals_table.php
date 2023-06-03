@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignUuid('empy_id')->references('id')->on('employees');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-          
+
             $table->timestamps();
         });
     }

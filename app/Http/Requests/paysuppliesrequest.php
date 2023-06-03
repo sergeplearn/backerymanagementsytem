@@ -22,10 +22,10 @@ class paysuppliesrequest extends FormRequest
     public function rules(): array
     {
         return [
-           'amount' => 'required|max:255',
-           'date' => 'required|max:255',
-           'ref_supply' => 'required|max:255',
-           'user_id' => 'required|max:255',
+            'amount' => 'required|max:255',
+            'date' => 'required|max:255',
+            'ref_supply' => 'required|max:255',
+            'user_id' => 'required|max:255',
             //
         ];
     }

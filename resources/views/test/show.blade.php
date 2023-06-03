@@ -51,7 +51,7 @@ $totalamount = 0;
    
 @endforeach
 
-<form action="/salaryregistration/employsal" method="post">
+<form action="{{route('regemploysal.store')}}" method="post">
 @csrf 
 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
 <input type="hidden" name="empy_id" class="form-control" value="{{$empy_id}}">
@@ -233,3 +233,7 @@ $totalamount = 0;
 
 
 @stop
+
+
+
+

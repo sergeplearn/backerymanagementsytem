@@ -42,7 +42,7 @@ $incs+= $increments;
     @endforeach
 </p>
 
-<form class="from-prevent-multiple-submits" action="/salaryregistration/store" method="post">
+<form class="from-prevent-multiple-submits" action="{{route('reghousesalary.store')}}" method="post">
 @csrf 
 <input type="hidden" name="house_id" value="{{ $worker }}" >
 

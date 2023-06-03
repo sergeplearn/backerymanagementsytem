@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('money', function (Blueprint $table) {
             $table->uuid('id')->primary();
-           
+
             $table->integer('amount');
             $table->date('date');
             $table->foreignUuid('emply_id')->references('id')->on('employees');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            
+
         });
     }
 

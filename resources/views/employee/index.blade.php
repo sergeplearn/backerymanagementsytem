@@ -116,11 +116,11 @@
 
 
 <div class="m-4 w-70">
-
+@can('create',App\Models\employee::class)
 <button type="button" class="btn mb-1 btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
  + New worker
 </button>
-
+@endcan
 <table id="example" class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
@@ -201,7 +201,7 @@
       <td>
         
       @can('isAdmin')
-      <a href="{{ route('employee.salary',$employee) }}" class="btn btn-outline-primary btn-sm d-inline btn-rounded"data-mdb-ripple-color="dark">Active</a>
+      <a href="{{ route('employee.paydate',$employee) }}" class="btn btn-outline-primary btn-sm d-inline btn-rounded"data-mdb-ripple-color="dark">Active</a>
 @endcan
      
 
@@ -210,7 +210,7 @@
       <td>
         
       @can('isAdmin')
-      <a href="{{route('employee.salarylist',$employee)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded"data-mdb-ripple-color="dark">Active</a>
+      <a href="{{route('regemploysal.show',$employee)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded"data-mdb-ripple-color="dark">Active</a>
 @endcan
      
 

@@ -185,13 +185,13 @@
       </td>
       
       <td>
-      <a href="{{route('houseworkers.paydate',$houseworker)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded "data-mdb-ripple-color="dark">Active</a>
+      <a href="{{route('houseworker.paydate',$houseworker->id)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded "data-mdb-ripple-color="dark">Active</a>
      
       </td>
       
 
       <td>
-      <a href="{{route('houseworkers.salaryrecord',$houseworker)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded "data-mdb-ripple-color="dark">Active</a>
+      <a href="{{route('reghousesalary.show',$houseworker)}}" class="btn btn-outline-primary btn-sm d-inline btn-rounded "data-mdb-ripple-color="dark">Active</a>
      
       </td>
       

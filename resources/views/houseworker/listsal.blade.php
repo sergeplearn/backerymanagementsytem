@@ -36,7 +36,7 @@ $number = 1;
             <th class="text-center">name</th>
             <th class="text-center">date</th>
             <th class="text-center">salary</th>
-            <th class="text-center">Delete</th>
+            <th class="text-center">Details</th>
             </tr>
     </thead>
     <tbody>
@@ -49,15 +49,18 @@ $number = 1;
             <td>
 
             
-            
-            <form action="/delete/Regemploysal/{{ $sal->id }}" method="post">
-          @csrf
-          @method('DELETE')
-          <button class="btn btn-danger"><i class="fas fa-trash fa-lg" ></i></button>
-        </form>
+           <form action="{{ route('reghousesalary.destroy',$sal->id)}}" method="post">
+          @csrf 
+           @method('DELETE')
+           <button> delete</button>
+           </form> 
+           
+          
+         
+       
         </td>
         </tr>
-        @endforeach
+       @endforeach
     </tbody>
 </table>
 

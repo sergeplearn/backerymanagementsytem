@@ -22,11 +22,11 @@ class increamentsal extends FormRequest
     public function rules(): array
     {
         return [
-       'house_id'=>'required',
-       'amount'=>'required',
-       'date'=>'required',
-      'user_id'=>'required',
-       
+            'house_id' => 'required',
+            'amount' => 'required',
+            'date' => 'required',
+            'user_id' => 'required',
+
         ];
     }
 }

@@ -3,9 +3,7 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-
 use Illuminate\Queue\SerializesModels;
 
 class welcomemail extends Mailable
@@ -22,6 +20,6 @@ class welcomemail extends Mailable
 
    public function build()
    {
-    return $this->view('mail.welcome');
+       return $this->view('mail.welcome');
    }
 }

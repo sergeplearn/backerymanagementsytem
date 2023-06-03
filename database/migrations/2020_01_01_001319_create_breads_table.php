@@ -27,12 +27,11 @@ return new class extends Migration
             $table->integer('bread1000');
             $table->string('ref_code');
             $table->date('date');
-          
+
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            
-            
+
             $table->timestamps();
-        
+
         });
     }
 
@@ -44,4 +43,3 @@ return new class extends Migration
         Schema::dropIfExists('breads');
     }
 };
-

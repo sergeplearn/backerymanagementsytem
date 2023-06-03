@@ -3,8 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'role',
         'last_login_at',
-        
+
     ];
 
     /**
@@ -46,10 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     //public function advance(): HasMany
     //{
-      //  return $this->hasMany(advance::class);
+    //  return $this->hasMany(advance::class);
     //}
 
     public function employees(): HasMany
@@ -61,6 +60,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(housetype::class);
     }
+
     public function moneys(): HasMany
     {
         return $this->hasMany(money::class);
@@ -68,7 +68,7 @@ class User extends Authenticatable
 
     public function priceofbreads(): HasMany
     {
-        return $this->hasMany(priceofbread::class,'user_id');
+        return $this->hasMany(priceofbread::class, 'user_id');
     }
 
     public function houseworkers(): HasMany
@@ -80,5 +80,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(advance::class);
     }
-
 }

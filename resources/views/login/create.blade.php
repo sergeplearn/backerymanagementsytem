@@ -17,7 +17,7 @@
                 
 
   
-    <form class="needs-validation from-prevent-multiple-submits" novalidate action="/registration/storeuser" method="post">
+    <form class="needs-validation from-prevent-multiple-submits" novalidate action="{{route('User.store')}}" method="post">
 
        @csrf 
       
