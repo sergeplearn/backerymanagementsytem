@@ -213,7 +213,7 @@ $sum = 0;
                  $amount;   
 
                 ?>
-                    <td> <p class="fw-normal mb-1">{{ $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000) }} </p></td>
+                    <td> <p class="fw-normal mb-1">{{ number_format( $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000),2) }} </p></td>
                 
                     <td>@can('isAdmin')<a class="btn btn-info"data-mdb-ripple-color="dark"  href=" {{route('command.edit',$bread->command) }}"><i class="fas fa-pen-to-square fa-lg"></i></a>@endcan</td>
                 </tr>

@@ -89,7 +89,7 @@ $tatal_amount = 0;
                         <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $advance->created_at }}</td>
-                            <td>{{$amount = $advance->amount}} <i class="fas fa-money-bill-1-wave"></i></td>
+                            <td>{{ number_format( $amount = $advance->amount,2)}} <i class="fas fa-money-bill-1-wave"></i></td>
 
                             <td>@can('isAdmin')<a class="btn info" data-mdb-ripple-color="dark"
                                     href="{{ route('advance.edit',$advance->id) }}"><i

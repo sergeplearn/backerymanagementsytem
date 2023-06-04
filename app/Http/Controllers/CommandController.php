@@ -14,8 +14,8 @@ class CommandController extends Controller
         $employ_id = $id;
 
         $command = DB::table('commands')
-            ->join('employees', 'employees.id', '=', 'commands.emply_id')
             ->where('employees.id', $id)
+            ->join('employees', 'employees.id', '=', 'commands.emply_id')
             ->select('commands.id AS command', 'commands.emply_id', 'commands.created_at', 'employees.id AS employ', 'bread50', 'long40', 'square40', 'long80', 'round', 'kirico', 'square80', 'bread200', 'bread300', 'bread500', 'bread1000')
             ->latest()
             ->get();

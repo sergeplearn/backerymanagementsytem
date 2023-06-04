@@ -21,7 +21,6 @@ class AdvanceController extends Controller
 
     }
 
-   
     public function show($id)
     {
         $houseid = $id;

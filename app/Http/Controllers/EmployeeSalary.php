@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeSalary extends Controller
 {
@@ -25,6 +26,5 @@ class EmployeeSalary extends Controller
 
         return view('test.show', ['salary' => $salary, 'money' => $money, 'employees' => $employees]);
 
-    
     }
 }

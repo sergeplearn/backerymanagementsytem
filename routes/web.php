@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\RegemploysalController;
-use App\Http\Controllers\SalaryController;
-use App\Http\Controllers\HouseworkerController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HouseSalary;
 use App\Http\Controllers\EmployeeSalary;
+use App\Http\Controllers\HouseSalary;
+use App\Http\Controllers\HouseworkerController;
+use App\Http\Controllers\RegemploysalController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,71 +28,80 @@ Route::group(['middleware' => 'auth'], function () {
 
     //paysupplies
     Route::resource('paysupplie', PaysuppliesController::class)
-        ->only(['show', 'store', 'edit', 'update']);
+        ->except(['index', 'destroy']);
 
     //supply route
     Route::resource('supply', SupplyController::class)
-        ->only(['index', 'store', 'edit', 'update', 'destroy']);
+        ->except(['show']);
 
     //expenditure
     Route::resource('expenditure', ExpenditureController::class)
-        ->only(['index', 'store', 'edit', 'update', 'update']);
+        ->except(['show', 'destroy']);
 
     //houseworker controller
-    Route::get('houseworkers/paydate/{id}', [HouseworkerController::class, 'paydate'])->name('houseworker.paydate')->middleware('CheckRole:admin');
-    Route::get('houseworkers/salary',HouseSalary::class)->name('houseworkers.salary')->middleware('CheckRole:admin');
+    Route::get('houseworkers/paydate/{id}', [HouseworkerController::class, 'paydate'])
+        ->name('houseworker.paydate')
+        ->middleware('CheckRole:admin');
+
+    Route::get('houseworkers/salary', HouseSalary::class)
+        ->name('houseworkers.salary')
+        ->middleware('CheckRole:admin');
+
     Route::resource('houseworker', HouseworkerController::class)
-        ->only(['index', 'store', 'edit', 'update', 'destroy'])->middleware('CheckRole:admin');
+        ->except(['show']);
 
     //commands for the day
 
     Route::resource('command', CommandController::class)
-        ->only(['show', 'store', 'edit', 'update']);
+        ->except(['index', 'destroy']);
 
     //advance salary
 
     Route::resource('advance', AdvanceController::class)
-        ->only(['show', 'store', 'edit', 'update', 'destroy'])->middleware('CheckRole:admin');
+        ->except(['index'])
+        ->middleware('CheckRole:admin');
 
     //daily collection of money from workers
     Route::resource('money', MoneyController::class)
-        ->only(['show', 'store', 'edit', 'update', 'destroy']);
+        ->except(['index']);
 
     //collection of bread
     Route::resource('bread', BreadController::class)
-        ->only(['show', 'store', 'edit', 'update']);
+        ->except(['index', 'destroy']);
 
     //itemsupplied
     Route::resource('itemsupplied', itemsuppliedController::class)
-        ->only(['show', 'store', 'edit', 'update', 'destroy'])->middleware('CheckRole:admin');
+        ->except(['index'])
+        ->middleware('CheckRole:admin');
 
     //employees
     Route::get('/employees/salary', EmployeeSalary::class);
-    Route::get('/employees/paydate/{employee}', [EmployeeController::class, 'salary'])->name('employee.paydate');
+    Route::get('/employees/paydate/{employee}', [EmployeeController::class, 'salary'])
+        ->name('employee.paydate');
 
     Route::resource('employee', EmployeeController::class)
-        ->only(['index', 'store', 'edit', 'update', 'destroy']);
+        ->except(['show']);
 
     //increment house workers salary
     Route::resource('houseincrement', HouseincrementController::class)
-        ->only(['show', 'store', 'edit', 'update', 'destroy'])->middleware('CheckRole:admin');
+        ->except(['index'])
+        ->middleware('CheckRole:admin');
 
     //set price for each bread
     Route::resource('priceofbread', PriceofbreadController::class)
-        ->only(['index', 'store', 'edit', 'update', 'destroy']);
+        ->except(['show']);
 
     //register employees salary controllers
     Route::resource('regemploysal', RegemploysalController::class)
-        ->only(['show', 'store', 'edit', 'destroy']);
+        ->except(['index', 'update']);
 
     //register house worker salary controller
     Route::delete('/Reghousesalary/{id}', 'ReghousesalaryController@destroy');
 
     Route::resource('reghousesalary', ReghousesalaryController::class)
-        ->only(['index', 'show', 'store', 'edit', 'destroy']);
+        ->except(['update']);
 
-    Route::resource('User', AdduserController::class)
-        ->only(['index', 'show', 'store', 'edit', 'destroy']);
+    Route::resource('User', AdduserController::class)->except(['update']);
 
     //still to be corrected
 
@@ -113,7 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //house rent sytem
 Route::resource('housetype', HousetypeController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy']);
+    ->except(['show']);
 
 /*Route::resource('rentpayment', RentpaymentController::class)
 ->only(['index', 'store', 'edit', 'update'])

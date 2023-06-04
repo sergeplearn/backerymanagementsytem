@@ -220,7 +220,7 @@ $sum = 0;
                  $amount;   
 
                 ?>
-                    <td> <p class="fw-normal mb-1">{{ $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000) }} <i class="fas fa-money-bill-1-wave"></i> </p></td>
+                    <td> <p class="fw-normal mb-1">{{ number_format( $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000),2) }} <i class="fas fa-money-bill-1-wave"></i> </p></td>
                    
                     <td>@can('isAdmin')
                       <a class="btn btn-info"data-mdb-ripple-color="dark"  href="{{ route('bread.edit',$bread->id) }}">
@@ -304,21 +304,21 @@ $totalpayedin+= $payment
         <tr>
             <th> <b>Total Money</b></th>
             <td><?php
-            echo $sum;  
+            echo number_format($sum,2);  
              ?>  <i class="fas fa-money-bill-1-wave"></i>
             </td>
         </tr>
         <tr>
             <th> <b>Woerker payment</b></th>
             <td><?php
-            echo $totalpayedin;
+            echo number_format($totalpayedin,2);
              ?>  <i class="fas fa-money-bill-1-wave"></i>
             </td>
         </tr>
         <tr>
             <th> <b>Balance</b></th>
             <td>
-            {{ $sum-$totalpayedin }}  <i class="fas fa-money-bill-1-wave"></i>
+            {{ number_format($sum-$totalpayedin,2) }}  <i class="fas fa-money-bill-1-wave"></i>
             </td>
         </tr>
     </table>

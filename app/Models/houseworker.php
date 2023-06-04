@@ -21,6 +21,13 @@ class houseworker extends Model
 
     ];
 
+    protected function setfnameattribute($value)
+    {
+        $this->attributes['fname'] = 'Mr/Mrs '.strtolower($value);
+        // $this->attributes['fname'] = ucfirst($value);
+
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

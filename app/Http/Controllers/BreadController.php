@@ -15,26 +15,26 @@ class BreadController extends Controller
         $employ_code = request('employ_code');
 
         $money = DB::table('money')
-            ->select('emply_id', 'amount')
             ->where('money.emply_id', $id)
+            ->select('emply_id', 'amount')
             ->latest()
             ->get();
 
         $breadtaken = DB::table('breads')
-            ->select('id', 'emply_id', 'updated_at', 'created_at', 'ref_code', 'bread50', 'long40', 'square40', 'long80', 'round', 'kirico', 'square80', 'bread200', 'bread300', 'bread500', 'bread1000')
             ->where('emply_id', $id)
+            ->select('id', 'emply_id', 'updated_at', 'created_at', 'ref_code', 'bread50', 'long40', 'square40', 'long80', 'round', 'kirico', 'square80', 'bread200', 'bread300', 'bread500', 'bread1000')
             ->latest()
             ->get();
 
         $employees = DB::table('employees')
-            ->select('employees.pecentage', 'id', 'fname', 'sname')
             ->where('id', $id)
+            ->select('employees.pecentage', 'id', 'fname', 'sname')
             ->latest()
             ->get();
 
         $price = DB::table('priceofbreads')
-            ->select('bread50', 'bread100', 'bread200', 'bread300', 'bread500', 'bread1000', 'id')
             ->where('priceofbreads.id', 1)
+            ->select('bread50', 'bread100', 'bread200', 'bread300', 'bread500', 'bread1000', 'id')
             ->latest()
             ->get();
 

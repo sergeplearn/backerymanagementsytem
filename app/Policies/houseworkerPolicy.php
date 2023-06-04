@@ -17,8 +17,8 @@ class houseworkerPolicy
     }
 
     /**
-         * Determine whether the user can view any models.
-         */
+     * Determine whether the user can view any models.
+     */
     public function viewAny(User $user): bool
     {
         //
@@ -29,7 +29,7 @@ class houseworkerPolicy
      */
     public function view(User $user, houseworker $houseworker): bool
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -45,7 +45,7 @@ class houseworkerPolicy
      */
     public function update(User $user, houseworker $houseworker): bool
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -53,7 +53,7 @@ class houseworkerPolicy
      */
     public function delete(User $user, houseworker $houseworker): bool
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
