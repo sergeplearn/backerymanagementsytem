@@ -46,7 +46,7 @@
 <input type="text"  name="sname" class="form-control" aria-describedby="inputGroupPrepend" required>
 
 <div class="invalid-feedback">
-        Please please enter the second name.
+        please enter the second name.
       </div>
 </div>
 
@@ -206,6 +206,7 @@
 </table>
 
 
+<a class="btn mb-3 btn-primary" href="/priceofbread/1/edit">pricechange</a>
 </div>
 
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class bread extends Model
 {
@@ -29,4 +30,9 @@ class bread extends Model
         'ref_code',
         'emply_id',
         'date'];
+
+    public function employees(): BelongsTo
+    {
+        return $this->belongsTo(employee::class, 'emply_id');
+    }
 }

@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //set price for each bread
     Route::resource('priceofbread', PriceofbreadController::class)
-        ->except(['show']);
+        ->only(['edit', 'update']);
 
     //register employees salary controllers
     Route::resource('regemploysal', RegemploysalController::class)

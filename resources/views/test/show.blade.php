@@ -141,17 +141,17 @@ $totalamount = 0;
     </tr>
     <tr>
       <th scope="row">TM</th>
-      <td>{{ $tbread50 * 50 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tlong40 * 50 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tsquare40 * 50 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{  $tlong80 * 100 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{  $tround * 100 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tkirico * 100 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tsquare80 * 100 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tbread200 * 200 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tbread300 * 300 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tbread500 * 500 }} <i class="fas fa-money-bill-1-wave"></i></td>
-      <td>{{ $tbread1000 * 1000 }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tbread50 * $price->bread50  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tlong40 * $price->bread50  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tsquare40 * $price->bread50  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{  $tlong80 * $price->bread100  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{  $tround * $price->bread100  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tkirico * $price->bread100  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tsquare80 * $price->bread100  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tbread200 * $price->bread200  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tbread300 * $price->bread300  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tbread500 * $price->bread500  }} <i class="fas fa-money-bill-1-wave"></i></td>
+      <td>{{ $tbread1000 * $price->bread1000  }} <i class="fas fa-money-bill-1-wave"></i></td>
     </tr>
     
   </tbody>
@@ -181,7 +181,7 @@ $totalamount = 0;
     <table class="table table-sm card-text table-borderless">
     <tr>
         <th><b> total money:</b></th>
-        <td>{{ $totalmoney = (($tbread50 + $tlong40 + $tsquare40 ) * 50) + (( $tlong80 + $tround + $tkirico + $tsquare80 ) * 100) + ( $tbread200 * 200) + ( $tbread300 * 300 ) + ( $tbread500 * 500) + ( $tbread1000 *1000) }}  <i class="fas fa-money-bill-1-wave"></i></td>
+        <td>{{ $totalmoney = (($tbread50 + $tlong40 + $tsquare40 ) * $price->bread50 ) + (( $tlong80 + $tround + $tkirico + $tsquare80 ) * $price->bread100 ) + ( $tbread200 * $price->bread200) + ( $tbread300 * $price->bread300 ) + ( $tbread500 * $price->bread500) + ( $tbread1000 * $price->bread1000) }}  <i class="fas fa-money-bill-1-wave"></i></td>
     </tr>
     <tr>
         <th><b> workers payment</b></th>

@@ -8,27 +8,18 @@ use Illuminate\Http\Request;
 class PriceofbreadController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the form for editing the specified resource.
      */
-    public function index()
+    public function edit(priceofbread $priceofbread)
     {
 
-        return view('price.index', ['priceofbreads' => priceofbread::with('user')->latest()->get()]);
-
+        return view('price.edit', ['priceofbread' => $priceofbread]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Update the specified resource in storage.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function update(Request $request, priceofbread $priceofbread)
     {
         $validation = $request->validate([
             'bread50' => 'required',
@@ -38,33 +29,9 @@ class PriceofbreadController extends Controller
             'bread500' => 'required',
             'bread1000' => 'required',
         ]);
-        $request->user()->priceofbreads()->create($validation);
+        $priceofbread->update($validation);
 
-        return 'save';
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(priceofbread $priceofbread)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(priceofbread $priceofbread)
-    {
-        dd($priceofbread);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, priceofbread $priceofbread)
-    {
-        //
+        return redirect('/priceofbread/1/edit')->with('msgs', 'successfully updated');
     }
 
     /**

@@ -35,6 +35,11 @@ class employee extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function breads(): HasMany
+    {
+        return $this->hasMany(bread::class, 'emply_id');
+    }
+
     public function moneys(): HasMany
     {
         return $this->hasMany(money::class, 'emply_id');

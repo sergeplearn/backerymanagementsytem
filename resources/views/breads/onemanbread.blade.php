@@ -20,8 +20,8 @@
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}" class="form-control">
 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
-<input type="hidden" name="emply_id" value="{{ $employ_id}}" class="form-control" >
-<input type="hidden" name="ref_code" value="{{ $employ_code }}" class="form-control">
+<input type="hidden" name="emply_id" value="{{ $employees->id }}" class="form-control" >
+<input type="hidden" name="ref_code" value="{{ $employees->code }}" class="form-control">
 <input type="hidden" name="date" value="<?php echo date("Y/m/d") ?>" class="form-control">
 
 
@@ -146,20 +146,9 @@
 
 
 
-<p class="d-lg-none">
-@foreach(@$employees as $employees)
-{{ $fname = $employees->fname}}
-{{ $sname = $employees->sname }}
-@endforeach
-</p>
+
 <?php $count = 1;
 $totalpayedin = 0;
-$bread50 = 50;
-$bread100 = 100;
-$bread200 = 200;
-$bread300 = 300;
-$bread500 = 500;
-$bread1000 = 1000;
 $sum = 0;
 
 ?>
@@ -201,6 +190,7 @@ $sum = 0;
                 </thead>
                 <tbody>
                 @forelse($breadtaken as $bread)
+                
                 <tr>
                 <td> <p class="fw-normal mb-1 ">{{ $count++ }}</p></td>
                 <td> <p class="fw-normal mb-1 ">{{ $bread->bread50 }}</p></td>
@@ -220,7 +210,7 @@ $sum = 0;
                  $amount;   
 
                 ?>
-                    <td> <p class="fw-normal mb-1">{{ number_format( $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000),2) }} <i class="fas fa-money-bill-1-wave"></i> </p></td>
+                    <td> <p class="fw-normal mb-1">{{ number_format( $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $price->bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $price->bread100) + ($bread->bread200 * $price->bread200) + ($bread->bread300 * $price->bread300) + ($bread->bread500 * $price->bread500) + ($bread->bread1000 * $price->bread1000),2) }} <i class="fas fa-money-bill-1-wave"></i> </p></td>
                    
                     <td>@can('isAdmin')
                       <a class="btn btn-info"data-mdb-ripple-color="dark"  href="{{ route('bread.edit',$bread->id) }}">
@@ -237,7 +227,7 @@ $sum = 0;
             
       
                    
-<p class="d-lg-none">{{ $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $bread100) + ($bread->bread200 * $bread200) + ($bread->bread300 * $bread300) + ($bread->bread500 * $bread500) + ($bread->bread1000 * $bread1000) }}  </p>
+<p class="d-lg-none">{{ $amount = (($bread->bread50 + $bread->long40 + $bread->square40) * $price->bread50) + (($bread->long80 + $bread->round + $bread->kirico + $bread->square80) * $price->bread100) + ($bread->bread200 * $price->bread200) + ($bread->bread300 * $price->bread300) + ($bread->bread500 * $price->bread500) + ($bread->bread1000 * $price->bread1000) }}  </p>
 <?php
 $sum+= $amount;
 
@@ -298,7 +288,7 @@ $totalpayedin+= $payment
     <tr>
             <th> <b>Full Name</b></th>
             <td>
-                {{ $fname }} {{ $sname }}
+                {{ $employees->fname }} {{ $employees->sname }}
             </td>
         </tr>
         <tr>
@@ -333,7 +323,5 @@ $totalpayedin+= $payment
 </div>
     <div class="col-md-3"></div>
 </div>
-
-
 
 @stop

@@ -12,51 +12,51 @@
             <div class="modal-body">
 
                 <form class="needs-validation from-prevent-multiple-submits" novalidate
-                    action="{{ route('priceofbread.store') }}" method="post">
+                    action="{{ route('priceofbread.update',$priceofbread) }}" method="post">
 
                     @csrf
-
+                    @method('patch')
 
 
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread50" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread50" class="form-control" value="{{$priceofbread->bread50}}" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread100" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread100" value="{{$priceofbread->bread100}}" class="form-control" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread200" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread200" value="{{$priceofbread->bread200}}" class="form-control" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread300" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread300" value="{{$priceofbread->bread300}}" class="form-control" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread500" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread500" value="{{$priceofbread->bread500}}" class="form-control" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
 
                     <div class="form-group ">
                         <label for="validationServer03" class="form-label">enter the amount</label>
-                        <input type="text" name="bread1000" class="form-control" aria-describedby="inputGroupPrepend"
+                        <input type="text" name="bread1000" value="{{$priceofbread->bread1000}}" class="form-control" aria-describedby="inputGroupPrepend"
                             required>
                         <div class="invalid-feedback">please enter and amount.</div>
                     </div>
@@ -104,7 +104,7 @@
 
 
 
-@include('alert.alert')
+
 <div class="m-4 w-70">
 
 
@@ -113,11 +113,15 @@
     </button>
 
 
+
     <div class="card ">
         <div class="card-header text-center">price per bread</div>
+
+        
+           
         <div class="card-body text-center">
               <table class="table">
-              @foreach($priceofbreads as $priceofbread)
+              
                 <tr>
                     <th>
                     bread50
@@ -167,23 +171,16 @@
 </td>
 </tr>
 
-<tr>
- <th>
-                  Edit
-</th>
-<td>
 
-<a href="{{route('priceofbread.edit',$priceofbread)}}">Edit</a>
-</td>
-</tr>
 
-@endforeach
 </table>
 
            
 
 
         </div>
+
+        
 
     </div>
 

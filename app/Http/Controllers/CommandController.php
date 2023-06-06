@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommandValid;
 use App\Models\command;
+use App\Models\employee;
+use App\Models\priceofbread;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
@@ -12,15 +14,10 @@ class CommandController extends Controller
     public function show($id)
     {
         $employ_id = $id;
+        $price = priceofbread::find(1);
+        $command = employee::find($id)->commands;
 
-        $command = DB::table('commands')
-            ->where('employees.id', $id)
-            ->join('employees', 'employees.id', '=', 'commands.emply_id')
-            ->select('commands.id AS command', 'commands.emply_id', 'commands.created_at', 'employees.id AS employ', 'bread50', 'long40', 'square40', 'long80', 'round', 'kirico', 'square80', 'bread200', 'bread300', 'bread500', 'bread1000')
-            ->latest()
-            ->get();
-
-        return view('command.show', ['command' => $command, 'employ_id' => $employ_id]);
+        return view('command.show', ['command' => $command, 'employ_id' => $employ_id, 'price' => $price]);
     }
 
    public function store(CommandValid $request)
@@ -40,7 +37,7 @@ class CommandController extends Controller
 
        $datenow = date('Y/m/d');
 
-       $command = DB::table('commands')->where('date', $datenow)->get();
+       $command = DB::table('commands')->whereTime('date', '=', $datenow)->get();
 
        return view('command.today', compact('command'));
    }
