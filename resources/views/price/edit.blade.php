@@ -120,7 +120,12 @@
         
            
         <div class="card-body text-center">
-              <table class="table">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+
+            <table class="table">
               
                 <tr>
                     <th>
@@ -175,6 +180,11 @@
 
 </table>
 
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+  
            
 
 

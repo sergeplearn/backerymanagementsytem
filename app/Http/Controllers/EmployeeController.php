@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     public function salary(employee $employee)
     {
 
-        return view('test.delete', ['employ' => $employee]);
+        return view('employsal.paydate', ['employ' => $employee]);
     }
 
     public function edit(employee $employee)

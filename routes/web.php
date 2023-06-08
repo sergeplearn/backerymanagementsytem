@@ -6,6 +6,8 @@ use App\Http\Controllers\HouseSalary;
 use App\Http\Controllers\HouseworkerController;
 use App\Http\Controllers\RegemploysalController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodaysreportInvoice;
+use App\Http\Controllers\Todayrecord;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +105,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('User', AdduserController::class)->except(['update']);
 
+
+    Route::get('/today', Todayrecord::class);
+    Route::get('/server', TodaysreportInvoice::class);
+   
     //still to be corrected
 
     Route::group(['prefix' => 'report'], function () {

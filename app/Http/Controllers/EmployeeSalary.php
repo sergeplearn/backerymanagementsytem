@@ -26,7 +26,7 @@ class EmployeeSalary extends Controller
         $employees = DB::table('employees')->where('id', $emp)->get();
         $salary = DB::table('breads')->where('breads.emply_id', $emp)->whereBetween('breads.date', [$start, $end])->get();
 
-        return view('test.show', ['salary' => $salary, 'money' => $money, 'employees' => $employees, 'price' => $price]);
+        return view('employsal.salary', ['salary' => $salary, 'money' => $money, 'employees' => $employees, 'price' => $price]);
 
     }
 }
