@@ -46,7 +46,7 @@ $totalregemploysals = 0;
         {{$bread1000 = $serge->bread1000 }}
 
     <?php
-        $totalbread50 += $bread50;
+      $totalbread50 += $bread50;
         $totallong40 += $long40;
         $totalsquare40 += $square40;
         $totallong80 += $long80;

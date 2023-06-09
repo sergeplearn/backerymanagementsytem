@@ -1,11 +1,16 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Material Design for Bootstrap</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
    <style>
     .page-break {
     page-break-after: always;
@@ -145,23 +150,109 @@
    </style>
   </head>
   <body>
+  <?php
+$totalbread50 = 0;
+$totallong40 = 0;
+$totalsquare40 = 0;
+$totallong80 = 0;
+$totalround = 0;
+$totalkirico = 0;
+$totalsquare80 = 0;
+$totalbread200 = 0;
+$totalbread300 = 0;
+$totalbread500 = 0;
+$totalbread1000 = 0;
+$expenditure = 0.00;
+$itemsupplied = 0.00;
+$moneycolleted = 0.00;
+$housesal = 0;
+$employeesal = 0;
+?>
+<p class = "d-none">
+	@foreach($expense as $expense)
+	{{ $totalexpense = $expense->amount }}
+	<?php
+$expenditure += $totalexpense;
 
+?>
+  @endforeach
+</p>
+<p class = "d-none">
+  @foreach($itemsupplieds as $itemsupplieds)
+	{{ $totalitemsupplied = $itemsupplieds->amount }}
+	<?php
+$itemsupplied += $totalitemsupplied;
+?>
+  @endforeach
+</p>
+<p class = "d-none">
+  @foreach( $money as  $money)
+	{{ $totalmoney =  $money->amount }}
+	<?php
+$moneycolleted += $totalmoney;
+?>
+  @endforeach
+</p>
+<p class = "d-none">
+  @foreach( $housesalary as  $housesalary)
+	{{ $tothousesalary =  $housesalary->salary }}
+	<?php
+$housesal += $tothousesalary;
+?>
+  @endforeach
+</p>
+<p class = "d-none">
+  @foreach( $regemploysals as  $regemploysals)
+	{{ $totregemploysals =  $regemploysals->salary }}
+	<?php
+$employeesal += $totregemploysals;
+?>
+  @endforeach
+
+</p>
+<p class = "d-none">
+  @foreach($employee as $serge)
+    
+   
+        {{$bread50 = $serge->bread50 }}
+       {{$long40 = $serge->long40 }}
+        {{$square40 = $serge->square40 }}
+        {{$long80 = $serge->long80 }}
+        {{$round = $serge->round }}
+        {{$kirico = $serge->kirico }}
+        {{$square80 = $serge->square80 }}
+        {{$bread200 = $serge->bread200 }}
+        {{$bread300 = $serge->bread300 }}
+        {{$bread500 = $serge->bread500 }}
+        {{$bread1000 = $serge->bread1000 }}
+   
+    <?php
+       $totalbread50 += $bread50;
+        $totallong40 += $long40;
+        $totalsquare40 += $square40;
+        $totallong80 += $long80;
+        $totalround += $round;
+        $totalkirico += $kirico;
+        $totalsquare80 += $square80;
+        $totalbread200 += $bread200;
+        $totalbread300 += $bread300;
+        $totalbread500 += $bread500;
+        $totalbread1000 += $bread1000;
+        
+        ?>
+@endforeach  
+
+ </p>
     <!-- Start your project here-->
-    <div class="container page-break">
+    <div class="container ">
 <div class="row gutters ">
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 			<div class="card">
+
 				<div class="card-body p-0">
 					<div class="invoice-container">
 						<div class="invoice-header">
-							<!-- Row start -->
-							<div class="row gutters">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-									<div class="custom-actions-btns mb-5">
-										
-									</div>
-								</div>
-							</div>
+							
 							<!-- Row end -->
 							<!-- Row start -->
 							<div class="row gutters">
@@ -217,36 +308,44 @@
 											<tbody>
 												<tr>
 													<td>
-														Wordpress Template
+														bread taken out today
 														<p class="m-0 text-muted">
 															Reference site about Lorem Ipsum, giving information on its origins.
 														</p>
 													</td>
 													<td>#50000981</td>
 													<td>9</td>
-													<td>$5000.00</td>
+													<td>{{ (($totalbread50 + $totallong40 + $totalsquare40 ) * $price->bread50 ) + (($totallong80 + $totalround + $totalkirico + $totalsquare80) * $price->bread100) + ($totalbread200 * $price->bread200 ) + ($totalbread300 * $price->bread300 ) + ($totalbread500 * $price->bread500)+ ($totalbread1000 * $price->bread1000) }}</td>
 												</tr>
 												<tr>
 													<td>
-														Maxwell Admin Template
+													total money collected for today
 														<p class="m-0 text-muted">
 															As well as a random Lipsum generator.
 														</p>
 													</td>
-													<td>#50000126</td>
+													<td>Total</td>
 													<td>5</td>
-													<td>$100.00</td>
+													<td>{{$moneycolleted}}</td>
 												</tr>
 												<tr>
 													<td>
-														Unify Admin Template
+														expenditures for  today
 														<p class="m-0 text-muted">
 															Lorem ipsum has become the industry standard.
 														</p>
 													</td>
-													<td>#50000821</td>
+													<td>
+														<p>supplies pay</p>
+														<p>other expenditure</p>
+														<p>salaray</p>
+													</td>
 													<td>6</td>
-													<td>$49.99</td>
+													<td>
+													<p>{{$itemsupplied}}</p>
+													<p>{{$expenditure}}</p>
+													<p>{{$housesal + $employeesal }}</p>	
+												
 												</tr>
 												<tr>
 													<td>&nbsp;</td>
