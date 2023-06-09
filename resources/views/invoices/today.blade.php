@@ -15,7 +15,8 @@
     .page-break {
     page-break-after: always;
 }
-    body{margin-top:20px;
+    body{
+		margin-top:20px;
     color: #2e323c;
     background: #f5f6fa;
     position: relative;
@@ -93,11 +94,6 @@
     text-transform: uppercase;
 }
 
-@media (max-width: 767px) {
-    .invoice-container {
-        padding: 1rem;
-    }
-}
 
 
 .custom-table {
@@ -127,7 +123,7 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: 0;
-    margin-bottom: 1rem;
+    
 }
 
 .text-success {
@@ -147,6 +143,10 @@
 .custom-actions-btns .btn {
     margin: .3rem 0 .3rem .3rem;
 }
+
+.page-break {
+    page-break-after: always;
+}
    </style>
   </head>
   <body>
@@ -165,6 +165,7 @@ $totalbread1000 = 0;
 $expenditure = 0.00;
 $itemsupplied = 0.00;
 $moneycolleted = 0.00;
+$advance = 0;
 $housesal = 0;
 $employeesal = 0;
 ?>
@@ -210,6 +211,16 @@ $employeesal += $totregemploysals;
   @endforeach
 
 </p>
+
+<p class = "d-none">
+  @foreach( $advances  as   $advances )
+	{{ $totadvances  =  $advances->amount }}
+	<?php
+ $advance += $totadvances;
+?>
+  @endforeach
+
+</p>
 <p class = "d-none">
   @foreach($employee as $serge)
     
@@ -243,6 +254,7 @@ $employeesal += $totregemploysals;
 @endforeach  
 
  </p>
+ 
     <!-- Start your project here-->
     <div class="container ">
 <div class="row gutters ">
@@ -258,7 +270,7 @@ $employeesal += $totregemploysals;
 							<div class="row gutters">
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 									<a href="index.html" class="invoice-logo">
-										Bootdey.com
+									Divine and favor.com
 									</a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6">
@@ -275,16 +287,22 @@ $employeesal += $totregemploysals;
 								<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<address>
-											Alex Maxwell<br>
-											150-600 Church Street, Florida, USA
+										{{ Auth::user()->name }}<br>
+											Divine and favor bakery, Yaounder, CMA
 										</address>
 									</div>
 								</div>
 								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<div class="invoice-num">
-											<div>Invoice - #009</div>
-											<div>January 10th 2020</div>
+										<?php
+											$one = date('d');
+											$two = date('m');
+											?>
+											<div>Invoice - #<?php echo $one.$two?></div>
+											<div><?php
+						   echo date("F jS, Y",strtotime("now"));
+							?></div>
 										</div>
 									</div>													
 								</div>
@@ -313,7 +331,7 @@ $employeesal += $totregemploysals;
 															Reference site about Lorem Ipsum, giving information on its origins.
 														</p>
 													</td>
-													<td>#50000981</td>
+													<td>total amount</td>
 													<td>9</td>
 													<td>{{ (($totalbread50 + $totallong40 + $totalsquare40 ) * $price->bread50 ) + (($totallong80 + $totalround + $totalkirico + $totalsquare80) * $price->bread100) + ($totalbread200 * $price->bread200 ) + ($totalbread300 * $price->bread300 ) + ($totalbread500 * $price->bread500)+ ($totalbread1000 * $price->bread1000) }}</td>
 												</tr>
@@ -344,7 +362,7 @@ $employeesal += $totregemploysals;
 													<td>
 													<p>{{$itemsupplied}}</p>
 													<p>{{$expenditure}}</p>
-													<p>{{$housesal + $employeesal }}</p>	
+													<p>{{$housesal + $employeesal + $advance}}</p>	
 												
 												</tr>
 												<tr>

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="description" content="bakery management sytem">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,6 +28,7 @@
     
     <link rel="stylesheet" href="/../css/fontawesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('css')
 </head>
    <!--Main Navigation-->
 <header>
@@ -65,6 +66,9 @@
           </li>
         </ul>
         <!-- Collapse 2 -->
+
+
+       
 
 
 
@@ -135,7 +139,25 @@
         <!-- Collapse 2 -->
 
 
-
+        <a
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+          data-mdb-toggle="collapse"
+          href="#collapseExamples3"
+          aria-expanded="true"
+          aria-controls="collapseExamples3"
+        >
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>invoice</span>
+        </a>
+        <!-- Collapsed content -->
+        <ul id="collapseExamples3" class="collapse list-group list-group-flush">
+         
+         
+          <li class="list-group-item py-1">
+            <a href="/today" class="text-reset"><span>todays</span></a>
+          </li>
+        </ul>
+        <!-- Collapse 2 -->
 
 
 
@@ -171,6 +193,9 @@
          
         </ul> 
 
+
+
+        
 
 
           </li>
@@ -325,7 +350,7 @@ document.getElementById('logout-form').submit();
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main id="backgroundImage" style="margin-top: 58px;">
+<main id="backgroundImage" style="margin-top:58px;">
   <div class="container pt-4">
   @yield('content')
 

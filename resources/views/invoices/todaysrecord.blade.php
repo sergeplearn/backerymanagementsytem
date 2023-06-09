@@ -1,17 +1,9 @@
 
 
 
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-   <style>
+@extends('layouts.app')
+@section('css')
+<style>
     .page-break {
     page-break-after: always;
 }
@@ -100,25 +92,6 @@
 }
 
 
-.custom-table {
-    border: 1px solid #e0e3ec;
-}
-.custom-table thead {
-    background: #007ae1;
-}
-.custom-table thead th {
-    border: 0;
-    color: #ffffff;
-}
-.custom-table > tbody tr:hover {
-    background: #fafafa;
-}
-.custom-table > tbody tr:nth-of-type(even) {
-    background-color: #ffffff;
-}
-.custom-table > tbody td {
-    border: 1px solid #e6e9f0;
-}
 
 
 .card {
@@ -148,8 +121,9 @@
     margin: .3rem 0 .3rem .3rem;
 }
    </style>
-  </head>
-  <body>
+@stop
+@section('content')
+
   <?php
 $totalbread50 = 0;
 $totallong40 = 0;
@@ -166,6 +140,7 @@ $expenditure = 0.00;
 $itemsupplied = 0.00;
 $moneycolleted = 0.00;
 $housesal = 0;
+$advance = 0;
 $employeesal = 0;
 ?>
 <p class = "d-none">
@@ -202,7 +177,7 @@ $housesal += $tothousesalary;
   @endforeach
 </p>
 <p class = "d-none">
-  @foreach( $regemploysals as  $regemploysals)
+  @foreach( $regemploysals as   $regemploysals)
 	{{ $totregemploysals =  $regemploysals->salary }}
 	<?php
 $employeesal += $totregemploysals;
@@ -210,6 +185,22 @@ $employeesal += $totregemploysals;
   @endforeach
 
 </p>
+
+
+<p class = "d-none">
+  @foreach( $advances  as   $advances )
+	{{ $totadvances  =  $advances->amount }}
+	<?php
+$advance += $totadvances;
+?>
+  @endforeach
+
+</p>
+
+
+
+
+
 <p class = "d-none">
   @foreach($employee as $serge)
     
@@ -244,7 +235,7 @@ $employeesal += $totregemploysals;
 
  </p>
     <!-- Start your project here-->
-    <div class="container ">
+    
 <div class="row gutters ">
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 			<div class="card">
@@ -267,10 +258,12 @@ $employeesal += $totregemploysals;
 							</div>
 							<!-- Row end -->
 							<!-- Row start -->
+							
+							
 							<div class="row gutters">
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 									<a href="index.html" class="invoice-logo">
-										Bootdey.com
+										Divine and favor.com
 									</a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6">
@@ -287,16 +280,23 @@ $employeesal += $totregemploysals;
 								<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<address>
-											Alex Maxwell<br>
-											150-600 Church Street, Florida, USA
+											
+											{{ Auth::user()->name }}<br>
+											Divine and favor bakery, Yaounder, CMA
 										</address>
 									</div>
 								</div>
 								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<div class="invoice-num">
-											<div>Invoice - #009</div>
-											<div>January 10th 2020</div>
+											<?php
+											$one = date('d');
+											$two = date('m');
+											?>
+											<div>Invoice - #<?php echo $one.$two?></div>
+											<div><?php
+						   echo date("F jS, Y",strtotime("now"));
+							?></div>
 										</div>
 									</div>													
 								</div>
@@ -308,7 +308,7 @@ $employeesal += $totregemploysals;
 							<div class="row gutters">
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<div class="table-responsive">
-										<table class="table custom-table m-0">
+										<table class="table ">
 											<thead>
 												<tr>
 													<th>Items</th>
@@ -325,7 +325,7 @@ $employeesal += $totregemploysals;
 															Reference site about Lorem Ipsum, giving information on its origins.
 														</p>
 													</td>
-													<td>#50000981</td>
+													<td>total amount</td>
 													<td>9</td>
 													<td>{{ (($totalbread50 + $totallong40 + $totalsquare40 ) * $price->bread50 ) + (($totallong80 + $totalround + $totalkirico + $totalsquare80) * $price->bread100) + ($totalbread200 * $price->bread200 ) + ($totalbread300 * $price->bread300 ) + ($totalbread500 * $price->bread500)+ ($totalbread1000 * $price->bread1000) }}</td>
 												</tr>
@@ -355,8 +355,8 @@ $employeesal += $totregemploysals;
 													<td>6</td>
 													<td>
 													<p>{{$itemsupplied}}</p>
-													<p>{{$expenditure}}</p>
-													<p>{{$housesal + $employeesal }}</p>	
+													<p>{{$expenditure }}</p>
+													<p>{{$housesal + $employeesal + $advance }}</p>	
 												
 												</tr>
 												<tr>
@@ -393,10 +393,9 @@ $employeesal += $totregemploysals;
 			</div>
 		</div>
 	</div>
-</div>
+
     <!-- End your project here-->
 
     <!-- MDB -->
     
-  </body>
-</html>
+  @stop

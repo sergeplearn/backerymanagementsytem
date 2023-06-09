@@ -43,8 +43,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
     image-orientation: from-image;
     background-image: url(/img/bread.jpg);
     background-repeat: repeat;
