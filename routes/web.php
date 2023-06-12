@@ -26,6 +26,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::resource('stockcontrol', StockcontrolController::class)
+->only(['index']);
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     //paysupplies

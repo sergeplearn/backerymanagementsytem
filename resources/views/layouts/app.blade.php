@@ -19,8 +19,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <script src="/../resources/js/app.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+   
   <link rel="stylesheet" href=" https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">  
     <link rel="stylesheet" href="/../css/mdb.min.css">
     <link rel="stylesheet" href="/../css/style.css">
@@ -155,6 +155,27 @@
          
           <li class="list-group-item py-1">
             <a href="/today" class="text-reset"><span>todays</span></a>
+          </li>
+        </ul>
+        <!-- Collapse 2 -->
+
+
+        <a
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+          data-mdb-toggle="collapse"
+          href="#collapseExamples31"
+          aria-expanded="true"
+          aria-controls="collapseExamples31"
+        >
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>others</span>
+        </a>
+        <!-- Collapsed content -->
+        <ul id="collapseExamples31" class="collapse list-group list-group-flush">
+         
+         
+          <li class="list-group-item py-1">
+            <a href="/date" class="text-reset"><span>todays</span></a>
           </li>
         </ul>
         <!-- Collapse 2 -->

@@ -56,16 +56,72 @@ $totalamount = 0;
 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
 <input type="hidden" name="empy_id" class="form-control" value="{{$empy_id}}">
 <input type="hidden" classs="hidden" name="date" value="<?php echo date("Y/m/d") ?>" class="form-control">
-<div class="card text-center mt-2">
 
-  <div class="card-header"> <input type="text" class="no-border " name="name" value="{{ $firstname }} {{$lastname}}"> </div>
-  <div class="card-body">
+
+   <input type="hidden" class="no-border " name="name" value="{{ $firstname }} {{$lastname}}"> 
+  
   
   
     
-    <table id="example" class="table table-sm">
+    
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card">
+
+<div class=" bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1 class="text-center mt-4">{{ $firstname }} {{$lastname}}</h1></div>
+        <div class="col-sm-2">
+            <a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive w-100 p-3" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-sm-9">
+
+       
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class="table-responsive m-1">
+                    <table id="example" class="table table-hover" >
   <thead>
-    <tr>
+  <tr>
       <th class="text-center" scope="col">#</th>
       <th class="text-center" scope="col">B 50</th>
       <th class="text-center" scope="col">Lng 40</th>
@@ -81,7 +137,7 @@ $totalamount = 0;
     </tr>
   </thead>
   <tbody>
-    @forelse($salary as $salary)
+  @forelse($salary as $salary)
     <tr>
       <th scope="row">{{ $count++ }}</th>
       <td>{{ $totalbread50 = $salary->bread50 }}</td>
@@ -157,12 +213,79 @@ $totalamount = 0;
   </tbody>
 </table>
 
-    
-   
-  </div>
 
+
+
+
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center">
+                                <ul class="pagination" id="myPager"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/table-resp-->
+
+                   
+
+                </div>
+                
+              
+        </div>
+        <!--/tab-content-->
+
+    </div>
+    <!--/col-9-->
+    <div class="col-sm-3">
+            <!--left col-->
+
+            <ul class="list-group">
+               
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span>    2.13.2014</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> Joseph Doe</li>
+
+            </ul>
+
+            
+            <div class="card text-center mt-3 m-1">
+  
+  <div class="card-body">
+    
+            <table class="table table-sm ">
+    <tr>
+        <th><b> total money:</b></th>
+        <td>{{ $totalmoney = (($tbread50 + $tlong40 + $tsquare40 ) * $price->bread50 ) + (( $tlong80 + $tround + $tkirico + $tsquare80 ) * $price->bread100 ) + ( $tbread200 * $price->bread200) + ( $tbread300 * $price->bread300 ) + ( $tbread500 * $price->bread500) + ( $tbread1000 * $price->bread1000) }}  </td>
+    </tr>
+    <tr>
+        <th><b> workers payment</b></th>
+        <td>{{ $totalamount }} </i></td>
+    </tr>
+    <tr>
+        <th><b> balance left</b></th>
+        <td>{{ $balance = $totalmoney - $totalamount }}</i></td>
+    </tr>
+    <tr>
+        <th><b> workers %</b></th>
+        <td>{{ $pecentage }}</td>
+    </tr>
+</table>
+</div>
 </div>
 
+            <div class="panel panel-default">
+         
+                <div class="panel-body">
+                  
+                </div>
+            </div>
+
+        </div>
+        <!--/col-3-->
+</div>
+<!--/row-->
+</div>
 
 
 
@@ -173,43 +296,6 @@ $totalamount = 0;
     <div class="col-md-4">
 
 
-    <div class="card text-center">
-  <div class="card-header">Featured</div>
-  <div class="card-body">
-    
-    
-    <table class="table table-sm card-text table-borderless">
-    <tr>
-        <th><b> total money:</b></th>
-        <td>{{ $totalmoney = (($tbread50 + $tlong40 + $tsquare40 ) * $price->bread50 ) + (( $tlong80 + $tround + $tkirico + $tsquare80 ) * $price->bread100 ) + ( $tbread200 * $price->bread200) + ( $tbread300 * $price->bread300 ) + ( $tbread500 * $price->bread500) + ( $tbread1000 * $price->bread1000) }}  <i class="fas fa-money-bill-1-wave"></i></td>
-    </tr>
-    <tr>
-        <th><b> workers payment</b></th>
-        <td>{{ $totalamount }} <i class="fas fa-money-bill-1-wave"></i></td>
-    </tr>
-    <tr>
-        <th><b> balance left</b></th>
-        <td>{{ $balance = $totalmoney - $totalamount }} <i class="fas fa-money-bill-1-wave"></i></td>
-    </tr>
-    <tr>
-        <th><b> workers %</b></th>
-        <td>{{ $pecentage }}</td>
-    </tr>
-</table>
-
-    
-    
-  </div>
- 
-</div>
-
-
-
-
-
-    </div>
-   
-    <div class="col-md-6">
       
 
     <div class="card text-center">
@@ -230,8 +316,6 @@ $totalamount = 0;
 </div>
 
 </form>
-
-
 @stop
 
 

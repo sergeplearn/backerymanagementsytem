@@ -12,11 +12,9 @@
     <title>Material Design for Bootstrap</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
    <style>
-    .page-break {
-    page-break-after: always;
-}
+   
     body{
-		margin-top:20px;
+		margin-top:10px;
     color: #2e323c;
     background: #f5f6fa;
     position: relative;
@@ -33,7 +31,7 @@
     color: #2e323c;
 }
 .invoice-container .invoice-header .invoice-logo img {
-    max-width: 130px;
+    max-width: 150px;
 }
 .invoice-container .invoice-header address {
     font-size: 0.8rem;
@@ -151,6 +149,17 @@
   </head>
   <body>
   <?php
+   $totalbreads50 = 0;
+  $totallongs40 = 0;
+  $totalsquares40 = 0;
+  $totallongs80 = 0;
+  $totalrounds = 0;
+  $totalkiricos = 0;
+  $totalsquares80 = 0;
+  $totalbreads200 = 0;
+  $totalbreads300 = 0;
+  $totalbreads500 = 0;
+  $totalbreads1000 = 0;
 $totalbread50 = 0;
 $totallong40 = 0;
 $totalsquare40 = 0;
@@ -221,6 +230,42 @@ $employeesal += $totregemploysals;
   @endforeach
 
 </p>
+
+<p class = "d-none">
+  @foreach($command as $command)
+    
+   
+        {{$bread50 = $command->bread50 }}
+       {{$long40 = $command->long40 }}
+        {{$square40 = $command->square40 }}
+        {{$long80 = $command->long80 }}
+        {{$round = $command->round }}
+        {{$kirico = $command->kirico }}
+        {{$square80 = $command->square80 }}
+        {{$bread200 = $command->bread200 }}
+        {{$bread300 = $command->bread300 }}
+        {{$bread500 = $command->bread500 }}
+        {{$bread1000 = $command->bread1000 }}
+   
+    <?php
+       $totalbreads50 += $bread50;
+        $totallongs40 += $long40;
+        $totalsquares40 += $square40;
+        $totallongs80 += $long80;
+        $totalrounds += $round;
+        $totalkiricos += $kirico;
+        $totalsquares80 += $square80;
+        $totalbreads200 += $bread200;
+        $totalbreads300 += $bread300;
+        $totalbreads500 += $bread500;
+        $totalbreads1000 += $bread1000;
+        
+        ?>
+@endforeach  
+
+ </p>
+
+
 <p class = "d-none">
   @foreach($employee as $serge)
     
@@ -257,20 +302,22 @@ $employeesal += $totregemploysals;
  
     <!-- Start your project here-->
     <div class="container ">
-<div class="row gutters ">
-		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+	<div class="row gutters ">
+		<div class=" col-lg-12 ">
 			<div class="card">
 
 				<div class="card-body p-0">
 					<div class="invoice-container">
 						<div class="invoice-header">
 							
-							<!-- Row end -->
 							<!-- Row start -->
+							
+							
 							<div class="row gutters">
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 									<a href="index.html" class="invoice-logo">
-									Divine and favor.com
+										
+										Divine and favor.com
 									</a>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6">
@@ -287,7 +334,8 @@ $employeesal += $totregemploysals;
 								<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<address>
-										{{ Auth::user()->name }}<br>
+											
+											{{ Auth::user()->name }}<br>
 											Divine and favor bakery, Yaounder, CMA
 										</address>
 									</div>
@@ -295,7 +343,7 @@ $employeesal += $totregemploysals;
 								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 									<div class="invoice-details">
 										<div class="invoice-num">
-										<?php
+											<?php
 											$one = date('d');
 											$two = date('m');
 											?>
@@ -314,17 +362,37 @@ $employeesal += $totregemploysals;
 							<div class="row gutters">
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<div class="table-responsive">
-										<table class="table custom-table m-0">
+										<table class="table custom-table">
+										
 											<thead>
-												<tr>
+												<tr class="bg-info">
+												    <th>#</th>
+													<th>Description</th>
 													<th>Items</th>
-													<th>Product ID</th>
-													<th>Quantity</th>
-													<th>Sub Total</th>
+													<th>Money</th>
 												</tr>
 											</thead>
 											<tbody>
+
+											<tr>
+												<td>1</td>
+													<td>
+														command produce
+														<p class="m-0 text-muted">
+															Reference site about Lorem Ipsum, giving information on its origins.
+														</p>
+													</td>
+													<td>
+														total command produce<br>
+														total command 
+													</td>
+													
+													<td>
+													0.00 </br>	
+													{{ (($totalbreads50 + $totallongs40 + $totalsquares40 ) * $price->bread50 ) + (($totallongs80 + $totalrounds + $totalkiricos + $totalsquares80) * $price->bread100) + ($totalbreads200 * $price->bread200 ) + ($totalbreads300 * $price->bread300 ) + ($totalbreads500 * $price->bread500)+ ($totalbreads1000 * $price->bread1000) }}.00</td>
+												</tr>
 												<tr>
+												<td>2</td>
 													<td>
 														bread taken out today
 														<p class="m-0 text-muted">
@@ -332,10 +400,11 @@ $employeesal += $totregemploysals;
 														</p>
 													</td>
 													<td>total amount</td>
-													<td>9</td>
-													<td>{{ (($totalbread50 + $totallong40 + $totalsquare40 ) * $price->bread50 ) + (($totallong80 + $totalround + $totalkirico + $totalsquare80) * $price->bread100) + ($totalbread200 * $price->bread200 ) + ($totalbread300 * $price->bread300 ) + ($totalbread500 * $price->bread500)+ ($totalbread1000 * $price->bread1000) }}</td>
+													
+													<td>{{ (($totalbread50 + $totallong40 + $totalsquare40 ) * $price->bread50 ) + (($totallong80 + $totalround + $totalkirico + $totalsquare80) * $price->bread100) + ($totalbread200 * $price->bread200 ) + ($totalbread300 * $price->bread300 ) + ($totalbread500 * $price->bread500)+ ($totalbread1000 * $price->bread1000) }}.00</td>
 												</tr>
 												<tr>
+												<td>3</td>
 													<td>
 													total money collected for today
 														<p class="m-0 text-muted">
@@ -343,10 +412,11 @@ $employeesal += $totregemploysals;
 														</p>
 													</td>
 													<td>Total</td>
-													<td>5</td>
+													
 													<td>{{$moneycolleted}}</td>
 												</tr>
 												<tr>
+												<td>4</td>
 													<td>
 														expenditures for  today
 														<p class="m-0 text-muted">
@@ -354,34 +424,38 @@ $employeesal += $totregemploysals;
 														</p>
 													</td>
 													<td>
-														<p>supplies pay</p>
-														<p>other expenditure</p>
-														<p>salaray</p>
+														supplies payment<br>
+													    other expenditure<br>
+													    salaray<br>
 													</td>
-													<td>6</td>
+													
 													<td>
-													<p>{{$itemsupplied}}</p>
-													<p>{{$expenditure}}</p>
-													<p>{{$housesal + $employeesal + $advance}}</p>	
+													{{$itemsupplied}}<br>
+													{{$expenditure }}<br>
+													{{$housesal + $employeesal + $advance }}<br>
 												
 												</tr>
 												<tr>
+											
 													<td>&nbsp;</td>
-													<td colspan="2">
+													<td>&nbsp;</td>
+													<td >
 														<p>
-															Subtotal<br>
-															Shipping &amp; Handling<br>
-															Tax<br>
+														  
+															Total Money in<br>
+															total money out<br>
+															
 														</p>
-														<h5 class="text-success"><strong>Grand Total</strong></h5>
+														<h5 class="text-success"><strong>left over</strong></h5>
 													</td>			
 													<td>
 														<p>
-															$5000.00<br>
-															$100.00<br>
-															$49.00<br>
+														
+														{{$moneycolleted}}.00<br>
+															{{$itemsupplied + $expenditure + $housesal + $employeesal + $advance }}.00	<br>
+															
 														</p>
-														<h5 class="text-success"><strong>$5150.99</strong></h5>
+														<h5 class="text-success"><strong>{{$moneycolleted - ($itemsupplied + $expenditure + $housesal + $employeesal + $advance)}}.00</strong></h5>
 													</td>
 												</tr>
 											</tbody>
@@ -399,6 +473,7 @@ $employeesal += $totregemploysals;
 			</div>
 		</div>
 	</div>
+
 </div>
     <!-- End your project here-->
 

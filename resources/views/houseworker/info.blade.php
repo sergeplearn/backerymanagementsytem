@@ -2,7 +2,10 @@
 
 
 @extends('layouts.app')
+@section('css')
+
 @section('content')
+
 
 
 <!-- Button trigger modal -->
@@ -130,68 +133,86 @@
 </div>
 
 
-<div class="row">
-<div class="col-md-2"></div>
-<div class="col-md-8">
 @include('alert.alert')
 
-<div class="card text-center">
-  
-  <div class="card-header">House Worker Info</div>
-  <div class="card-body">
-   
-   
-    <table class="table align-middle table-sm mb-0 bg-white table-borderless ">
-  
-  <tr>
-      <th> <b>Full Name :</b> </th>
-      <td>{{ $houseworker->fname }} {{ $houseworker->sname}}</td>
-  </tr>
-  <tr>
-      <th> <b>Phone number :</b> </th>
-      <td>{{ $houseworker->tell }}</td>
-  </tr>
-  <tr>
-      <th> <b> salary :</b> </th>
-      <td>{{ $houseworker->salary }} <i class="fas fa-money-bill-1-wave"></i></td>
-  </tr>
-  <tr>
-      <th> <b> Address :</b> </th>
-      <td>{{ $houseworker->address }}</td>
-  </tr>
- 
-  <tr>
-      <th> <b> Delete :</b> </th>
-      <td>
-      <button type="button" class="btn btn-danger w-100 p-2" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-    Delete
-</button>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ $houseworker->fname }} {{ $houseworker->sname}}</h5>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="btn btn-primary">Delete</button>
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal2" class="btn btn-outline-primary ms-1">Update</button>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $houseworker->fname }} {{ $houseworker->sname}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Salary</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $houseworker->salary }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $houseworker->tell }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $houseworker->address }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Created</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $houseworker->created_at }}</p>
+              </div>
+             
+              @unless ($houseworker->created_at->eq($houseworker->updated_at))
 
-        
-      </td>
-  </tr>
-  
-</table>
-   
-   <p></p>
-   <button type="button" class="btn btn-info w-100 p-2" data-mdb-toggle="modal" data-mdb-target="#exampleModal2"><i class="fas fa-pen-to-square fa-lg"></i></button>
-    
-  </div>
-  @unless ($houseworker->created_at->eq($houseworker->updated_at))
-
-                                    <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
+                                    <small class="text-sm text-gray-600 text-center"> &middot; {{ __('edited') }}</small>
                                 @endunless
 
-  <div class="card-footer text-muted">{{ $houseworker->created_at }}</div>
-</div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+ 
 
 
 
 
-</div>
-<div class="col-md-2"></div>
-
-</div>
 
 
 

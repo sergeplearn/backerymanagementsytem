@@ -13,6 +13,24 @@ class Todayrecord extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        
+		$day = date('d') - 1;
+	    $commanddate = date('Y/m/'.$day);
+        $command = DB::table('commands')
+            ->select('commands.date',
+                'bread50', 'long40',
+                'square40', 'long80',
+                'round', 'kirico',
+                'square80', 'bread200',
+                'bread300', 'bread500',
+                'bread1000')
+            ->where('commands.date', $commanddate)
+            ->get();
+        if (! $command) {
+            $command = 0.00;
+        }
+										
         $price = priceofbread::find(1);
         $date = date('Y/m/d');
         $employee = DB::table('breads')
@@ -76,6 +94,7 @@ class Todayrecord extends Controller
 
         return view('invoices.todaysrecord',
             ['expense' => $expense,
+                'command'=>$command,
                 'itemsupplieds' => $itemsupplieds,
                 'advances' => $advances,
                 'housesalary' => $housesalary,

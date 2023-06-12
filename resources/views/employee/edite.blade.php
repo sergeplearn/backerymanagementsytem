@@ -131,84 +131,93 @@
 
 
 
-<div class="row m-5">
-   
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
 
   
   @include('alert.alert')
   
-<div class="card text-center">
-  <div class="card-header">Special title treatment</div>
-  <div class="card-body">
-
-   <table class="table">
-    <tr>
-      <th>Full Name</th>
-      <td>{{ $employee->fname }} {{ $employee->sname }}</td>
-    </tr>
-
-    <tr>
-      <th>NIC_number</th>
-      <td>{{ $employee->workerID }}</td>
-    </tr>
-
-    <tr>
-      <th>Address</th>
-      <td>{{ $employee->address }}</td>
-    </tr>
-
-    <tr>
-      <th>Code number</th>
-      <td>{{ $employee->code }}</td>
-    </tr>
-
-    <tr>
-      <th>Phone number</th>
-      <td>{{ $employee->tell }}</td>
-    </tr>
 
 
-    <tr>
-      <th>Payment %</th>
-      <td>{{ $employee->pecentage }}</td>
-    </tr>
 
 
-    <tr>
-      <th><!-- Button trigger modal -->
-      @can('update',$employee)
-<button type="button" class="btn btn-primary w-100" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-<i class="fas fa-pen-to-square fa-lg"></i>
-</button>
-@endcan
-</th>
-      <td><!-- Button trigger modal -->
-      @can('delete',$employee)   
-<button type="button" class="btn btn-danger w-100" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-<i class="fas fa-trash fa-lg" ></i>
-</button>
-@endcan
-</td>
-    </tr>
-   </table>
-   
+<div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ $employee->fname }} {{ $employee->sname }}</h5>
+            <div class="d-flex justify-content-center mb-2">
+            @can('delete',$employee)   
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal2" class="btn btn-primary">Delete</button>
+              @endcan
+              @can('update',$employee)
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="btn btn-outline-primary ms-1">Update</button>
+            @endcan
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $employee->fname }} {{ $employee->sname }}</p>
+              </div>
+            </div>
+           
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $employee->tell }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Pecentage</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $employee->pecentage }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $employee->address }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Created</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $employee->created_at }}</p>
+              </div>
+             
+              @unless ($employee->created_at->eq($employee->updated_at))
 
-   @unless ($employee->created_at->eq($employee->updated_at))
-  <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
-   @endunless
+                                    <small class="text-sm text-gray-600 text-center"> &middot; {{ __('edited') }}</small>
+                                @endunless
 
-
-  </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
  
-</div>
-
-
-</div>
-  <div class="col-md-2"></div>
-</div>
-
 
 
 

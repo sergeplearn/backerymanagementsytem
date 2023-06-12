@@ -47,6 +47,7 @@ class MoneyController extends Controller
     public function edit(money $money)
     {
 
+       
         return view('emmoney.edit', ['money' => $money]);
     }
 

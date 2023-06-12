@@ -107,72 +107,94 @@
 
 @include('alert.alert')
 
-<div class="row">
-<div class="col-md-2"></div>
-<div class="col-md-8">
-
-<div class="card text-center">
-  <div class="card-header">House Worker Info</div>
-  <div class="card-body">
-   
-   
-    <table class="table align-middle table-sm mb-0 bg-white table-borderless ">
-  
-  <tr>
-      <th> <b>Full Name :</b> </th>
-      <td>{{ $supply->name }} </td>
-  </tr>
-  <tr>
-      <th> <b>Phone number :</b> </th>
-      <td>{{ $supply->tell }}</td>
-  </tr>
-  <tr>
-      <th> <b> addresss :</b> </th>
-      <td>{{ $supply->address }}</td>
-  </tr>
-  <tr>
-      <th> <b> NIC_number :</b> </th>
-      <td>{{ $supply->NIC_no }}</td>
-  </tr>
-  <tr>
-      <th> @can('isAdmin')<b> Delete :</b>@endcan </th>
-      <td>
-
-      <button type="button" class="btn btn-danger w-100 p-2" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-<i class="fas fa-trash fa-lg" ></i>
-</button>
-      @can('isdeveloper')
-      <!-- Button trigger modal -->
-
-        
-        @endcan
-      </td>
-  </tr>
-</table>
-   
-   <p></p>
-   @can('isAdmin')
-
-   <button type="button" class="btn btn-info w-100 p-2" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-   <i class="fas fa-pen-to-square fa-lg"></i>
-</button>
-
 
 
 
     
-  @endcan
-  </div>
-  <div class="card-footer text-muted">{{ $supply->created_at }}</div>
-</div>
+  
 
 
-</div>
-<div class="col-md-2"></div>
-
-</div>
 
 
+
+
+
+<div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ $supply->name }} </h5>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal2" class="btn btn-primary">Delete</button>
+              @can('isAdmin')
+              <button type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="btn btn-outline-primary ms-1">Update</button>
+            @endcan
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  $supply->name }} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">NIC NO</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  $supply->NIC_no }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  $supply->tell }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  $supply->address }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Created</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ $supply->created_at }}</p>
+              </div>
+             
+              @unless ($supply->created_at->eq($supply->updated_at))
+
+                                    <small class="text-sm text-gray-600 text-center"> &middot; {{ __('edited') }}</small>
+                                @endunless
+
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+ 
 
 
 @stop
